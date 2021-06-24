@@ -1,37 +1,84 @@
-## Welcome to GitHub Pages
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-You can use the [editor on GitHub](https://github.com/Danmasanii/JAVA-GUI/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+public class javaGui implements ActionListener {
+	
+	private static JLabel password1, label;
+	private static JTextField username;
+	private static JButton button;
+	private static JCheckBox radio;
+	private static JPasswordField Password;
+	
+	
+public static void main(String[] args)  {
+		
+		
+		// Panel class
+		 JPanel panel = new JPanel();
+		 panel.setLayout(null);
+		
+		 
+		 // JFrame
+		JFrame frame = new JFrame();
+		frame.setTitle("LOGIN PAGE");
+		frame.setLocation(new Point(500, 300));
+		frame.add(panel);
+		frame.setSize(new Dimension(400, 200));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		// Username label
+		label = new JLabel("Username");
+		label.setBounds(100, 0, 70, 20);
+		panel.add(label);
+		
+		
+		// Username TextField
+		username = new JTextField();
+		username.setBounds(100, 20, 193, 28);
+		panel.add(username);
+			
+		
+		// Password Label
+		password1 = new JLabel("Password");
+		password1.setBounds(100, 45, 70, 20);
+		panel.add(password1);
+		
+		
+		// Password TextField
+		Password = new JPasswordField();			  			 
+		Password.setBounds(100, 65, 193, 28);
+		panel.add(Password);
+		
+		// Button component
+		button = new JButton("Login");
+		button.setBounds(100, 105, 97, 25);
+		button.setForeground(Color.WHITE);
+		button.setBackground(Color.BLACK);
+		button.addActionListener((ActionListener) new javaGui());
+		panel.add(button);
+				
+		
+		// RadioCheck component
+		radio = new JCheckBox("Remember Me");
+		radio.setBounds(198, 102, 100, 28);
+		panel.add(radio);
+		
+		frame.setVisible(true);
+		
+	}
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+	@Override
+	public void actionPerformed(ActionEvent e) {
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Danmasanii/JAVA-GUI/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+		String Username = username.getText();
+		String Password1 = Password.getText();
+		
+		if(Username.equals("java") && Password1.equals("123")) {
+			JOptionPane.showMessageDialog(null, "Login Successful");
+		}else {
+			JOptionPane.showMessageDialog(null, "Username or Password mismatch ");
+		}
+	}
+}
